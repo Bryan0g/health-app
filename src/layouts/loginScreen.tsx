@@ -1,6 +1,6 @@
 import {useNavigation } from "expo-router";
 import {View, Text, TextInput, StyleSheet, Alert, TouchableOpacity } from "react-native";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import RegisterScreen from "./RegisterScreen";
 
 
