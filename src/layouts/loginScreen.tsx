@@ -1,20 +1,27 @@
-import {userNavigation } from "expo-router";
+import {useNavigation } from "expo-router";
 import {View, Text, TextInput, StyleSheet, Alert, TouchableOpacity } from "react-native";
-import {userEffect} from "react";
+import {useEffect} from "react";
+import RegisterScreen from "./RegisterScreen";
 
 
 export default function LoginScreen() {
      ///const [email, setEmail]= userState();
      const navigation = useNavigation();
+     const [showRegister, setShowRegister] = useState(false);
 
+     
      useEffect(()=>{
         navigation.setOptions({headerShown: false})
      }, [navigation]);
 
+     if (showRegister)   {
+        return <RegisterScreen onClose={()=>setShowRegister(false)} />
+      }
+
   return (
     <View style={styles.container}>
       
-      <Text style={styles.tilte}>Sing in</Text>
+      <Text style={styles.title}>Sing in</Text>
       
       <TextInput 
         style={styles.input}
@@ -25,24 +32,28 @@ export default function LoginScreen() {
         placeholder="***********"
         secureTextEntry/>
 
-      <TouchableOpacity style={styles.buttom}>
+      <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>login </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>setShowRegister(true)}>
+        <Text style={styles.link}>sign up </Text>
       </TouchableOpacity>
 
     </View>
   );
 }
-const styles = StyleSheet.creative({
+const styles = StyleSheet.create({
     container:{
         flex: 1,
         justifyContent:"center",
-        alignItem:"center",
-        backgroundcolor:"#ff5733",
+        alignItems:"center",
+        backgroundColor:"#ff5733",
     },
     title:{
         fontSize:24,
         fontWeight:"bold",
-        margingButtom:20,
+        marginBottom:20,
     },
 
     input:{
@@ -50,18 +61,19 @@ const styles = StyleSheet.creative({
         width: "80%",
         padding: 10,
         marginVertical: 10,
-        getBackgroundColor: "white",
+        backgroundColor: "white",
         borderRadius:5,
-        borderWidht:1,
-        borederColor: "#ccc"
+        borderWidth:1,
+        borderColor: "#ccc"
 
     },
     button:{
         marginTop:20,
-        getBackgroundColor:"#008CBA",
+        backgroundColor:"#008CBA",
         padding: 10,
         borderRadius: 5,
-        Widht:"80 %"
+        width:"80 %",
+        alignItems:"center"
 
     },
     buttonText:{
@@ -69,4 +81,9 @@ const styles = StyleSheet.creative({
         fontSize: 18,
         fontWeight: "bold"
     },
+    link:{
+         marginTop: 10,
+         color: "blue",
+         textDecorationLine: "underline",
+    }
 })
