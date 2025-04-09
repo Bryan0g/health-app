@@ -1,11 +1,11 @@
 import {useNavigation } from "expo-router";
 import {View, Text, TextInput, StyleSheet, Alert, TouchableOpacity } from "react-native";
-import {useEffect} from "react";
+import {useEffect, useState } from "react";
 import RegisterScreen from "./RegisterScreen";
 
 
 export default function LoginScreen() {
-     ///const [email, setEmail]= userState();
+     //const [email, setEmail]= userState();
      const navigation = useNavigation();
      const [showRegister, setShowRegister] = useState(false);
 
