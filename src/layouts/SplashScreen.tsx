@@ -16,8 +16,8 @@ export default function SplashScreen(){
         return <LoginScreen/>;
     }
     return(
-          <view>
+          <View>
                 <Image source={require("../assest/logo.png")} />
-          </view>
+          </View>
     )
 }
