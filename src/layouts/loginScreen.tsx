@@ -1,44 +1,40 @@
-import { useNavigation } from "expo-router";
+import { useRouter } from "expo-router";
 import { useState, useEffect } from "react";
-import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
 import RegisterScreen from "./RegisterScreen";
 
 export default function LoginScreen() {
-  const navigation = useNavigation();
-  const [ShowRegister, setShowRegister] = useState(false);
+  const router = useRouter();
+  const [showRegister, setShowRegister] = useState(false);
 
-  // Estado para email, contraseña y mensaje de error
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // Oculta el header de navegación
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation]);
-
   // Si el usuario presiona "Sign up", muestra la pantalla de registro
-  if (ShowRegister) {
-    return <RegisterScreen onClose={() => setShowRegister(false)} />
+  if (showRegister) {
+    return <RegisterScreen onClose={() => setShowRegister(false)} />;
   }
 
-  // Función para manejar el inicio de sesión
   const handleLogin = () => {
-    // Simulación de usuarios válidos (puedes reemplazarlo por llamada a API)
     const validUsers = [
       { email: 'admin@gmail.com', password: '123456' },
     ];
 
-    // Verifica si el usuario existe y la contraseña coincide
     const userFound = validUsers.find(
       u => u.email === email && u.password === password
     );
 
     if (userFound) {
-      setError(''); // Limpia errores anteriores
-      Alert.alert('Bienvenido', 'Inicio de sesión exitoso');
-      // Puedes navegar a otra pantalla si lo deseas, ejemplo:
-      // navigation.navigate('Home');
+      setError('');
+      router.replace('./ServicesPortfolioScreen'); 
     } else {
       setError('Credenciales incorrectas o usuario no existe.');
     }
@@ -48,7 +44,6 @@ export default function LoginScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Sign in</Text>
 
-      {/* Campo de correo electrónico */}
       <TextInput
         style={styles.input}
         placeholder="admin@gmail.com"
@@ -56,7 +51,6 @@ export default function LoginScreen() {
         onChangeText={setEmail}
       />
 
-      {/* Campo de contraseña */}
       <TextInput
         style={styles.input}
         placeholder="**********"
@@ -65,15 +59,12 @@ export default function LoginScreen() {
         onChangeText={setPassword}
       />
 
-      {/* Muestra el error si existe */}
       {error !== '' && <Text style={styles.error}>{error}</Text>}
 
-      {/* Botón de inicio de sesión */}
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
-      {/* Link para ir al registro */}
       <TouchableOpacity onPress={() => setShowRegister(true)}>
         <Text style={styles.link}>Sign up</Text>
       </TouchableOpacity>

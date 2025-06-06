@@ -1,10 +1,10 @@
-import SplashScreen from "@/src/layouts/SplashScreen";
+import ServicesPortfolioScreen from "@/src/layouts/ServicesPortfolioScreen";
 
 
 
 export default function Index(){
     return(
-        <SplashScreen/>
+        <ServicesPortfolioScreen/>
     );
 
 }

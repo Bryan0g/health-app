@@ -6,20 +6,20 @@ const services = [
   {
     id: 1,
     name: 'Consulta General',
-    image: require('../../assets/consulta.png'),
+    image: require('../assets/consulta.jpg'),
     description: 'Atención médica general para todas las edades.'
   },
   {
     id: 2,
     name: 'Pediatría',
-    image: require('../../assets/pediatria.png'),
+    image: require('../assets/pediatria.jpg'),
     description: 'Especialistas en el cuidado de niños y adolescentes.'
   },
   {
     id: 3,
-    name: 'Ginecología',
-    image: require('../../assets/ginecologia.png'),
-    description: 'Salud femenina y planificación familiar.'
+    name: 'psicologia',
+    image: require('../assets/psicologia.jpg'),
+    description: 'Salud mental.'
   }
 ];
 
